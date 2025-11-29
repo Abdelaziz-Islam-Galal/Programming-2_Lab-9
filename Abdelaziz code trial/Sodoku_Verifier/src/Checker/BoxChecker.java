@@ -3,26 +3,31 @@ package Checker;
 import java.util.*;
 
 public class BoxChecker extends Checker {
-    private int i;
 
-    private BoxChecker(int[][] board, int i) {
+    private BoxChecker(int[][] board, int num) {
         super(board);
-        this.i = i;
+        this.num = num;
     }
 
     @Override
-    public Checker getInstance(int[][] board, int i) {
+    public Checker getInstance(int[][] board, int num) {
         if (instance == null) {
-            instance = new BoxChecker(board, i);
+            instance = new BoxChecker(board, num);
         }
 
         return instance;
     }
 
+    @Override
+    public void run() {
+        int[] box = collectsInts(num - 1);
+        findViolations(box);
+    }
+
     private int[] collectsInts(int boxIndex) {
         int[] box = new int[9];
-        int startRow = (boxIndex / 3) * 3;
-        int startCol = (boxIndex % 3) * 3;
+        int startRow = (boxIndex / 3) * 3; // the / floors the value so 0-3 is 0 , 4-6 is 1, 7-9 is 2 then *3
+        int startCol = (boxIndex % 3) * 3; // % for boxes: 4, 5, 6, 7, 8, 9
         int pos = 0;
 
         for (int i = startRow; i < startRow + 3; i++) {
@@ -34,13 +39,18 @@ public class BoxChecker extends Checker {
     }
 
     @Override
-    public void run() {
-        int[] box = collectsInts(i);
-        findViolations(box, i);
-    }
-
-    @Override
-    protected void findViolations(int[] numbers, int index) {
-
+    protected void findViolations(int[] numbers) {
+        for (int j = 1; j <= 9; j++) {
+            Set<Integer> positions = new HashSet<>();
+            for (int k = 0; k < numbers.length; k++) {
+                if (numbers[k] == j) {
+                    positions.add(k + 1);
+                }
+            }
+            if (positions.size() > 1) {
+                Violation violation = new Violation('b', num, j, positions);
+                boxViolations.add(violation);
+            }
+        }
     }
 }

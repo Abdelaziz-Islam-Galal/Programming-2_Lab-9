@@ -4,6 +4,7 @@ import java.util.*;
 public abstract class Checker implements Runnable {
     protected Checker instance;
     protected int[][] board;
+    protected int num; // the value of row/column/box (1 to 9)
     // lists of all violations
     protected List<Violation> rowViolations = new ArrayList<>();
     protected List<Violation> colViolations = new ArrayList<>();
@@ -15,6 +16,6 @@ public abstract class Checker implements Runnable {
 
     protected abstract Checker getInstance(int[][] board, int i);
 
-    protected abstract void findViolations(int[] numbers, int index);
+    protected abstract void findViolations(int[] numbers);
     
 }
