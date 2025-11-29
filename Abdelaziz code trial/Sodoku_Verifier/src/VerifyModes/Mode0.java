@@ -3,8 +3,17 @@ package VerifyModes;
 import Checker.*;
 
 public class Mode0 extends Verifier {
-    public Mode0(int[][] board) {
+    private static Mode0 instance;
+
+    private Mode0(int[][] board) {
         super(board);
+    }
+
+    public static Mode0 getInstance(int[][] board) {
+        if (instance == null) {
+            instance = new Mode0(board);
+        }
+        return instance;
     }
 
     @Override

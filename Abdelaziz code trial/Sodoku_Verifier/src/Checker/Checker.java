@@ -4,7 +4,6 @@ import java.util.*;
 import VerifyModes.Result;
 
 public abstract class Checker implements Runnable {
-    protected static Checker instance;
     protected int[] values;
     protected int num; // the value of row/column/box (1 to 9)
     // lists of all violations
