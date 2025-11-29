@@ -1,3 +1,4 @@
+package VerifyModes;
 public abstract class Verifier {
     protected int[][] board;
 

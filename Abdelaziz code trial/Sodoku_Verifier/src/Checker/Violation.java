@@ -54,4 +54,24 @@ public class Violation {
 
         this.positions = positions;
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getPositionsString() {
+        StringBuilder s = new StringBuilder();
+        Integer[] values = positions.toArray(new Integer[0]);
+        for (int i = 0; i < values.length; i++) {
+            s.append(values[i]);
+            if (i < values.length - 1) { // there are values left
+                s.append(", ");
+            }
+        }
+        return s.toString();
+    }
 }

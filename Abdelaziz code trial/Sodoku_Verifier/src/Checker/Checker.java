@@ -1,6 +1,8 @@
 package Checker;
 import java.util.*;
 
+import VerifyModes.Result;
+
 public abstract class Checker implements Runnable {
     protected Checker instance;
     protected int[][] board;
@@ -18,4 +20,7 @@ public abstract class Checker implements Runnable {
 
     protected abstract void findViolations(int[] numbers);
     
+    public Result getResult() {
+        return new Result(rowViolations, colViolations, boxViolations);
+    }
 }

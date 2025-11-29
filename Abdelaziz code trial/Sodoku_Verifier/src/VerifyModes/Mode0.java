@@ -1,3 +1,4 @@
+package VerifyModes;
 public class Mode0 extends Verifier {
     public Mode0(int[][] board) {
         super(board);
