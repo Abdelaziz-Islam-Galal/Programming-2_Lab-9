@@ -39,6 +39,12 @@ public class ColumnChecker extends Checker {
 
     @Override
     protected synchronized void addViolation(Violation violation) {
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            System.out.println("Interrupt exception catched");
+        }
         colViolations.add(violation);
+        notify();
     }
 }

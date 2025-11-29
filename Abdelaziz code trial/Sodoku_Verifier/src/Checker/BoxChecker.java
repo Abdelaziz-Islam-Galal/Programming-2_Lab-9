@@ -45,6 +45,12 @@ public class BoxChecker extends Checker {
 
     @Override
     protected synchronized void addViolation(Violation violation) {
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            System.out.println("Interrupt exception catched");
+        }
         boxViolations.add(violation);
+        notify();
     }
 }

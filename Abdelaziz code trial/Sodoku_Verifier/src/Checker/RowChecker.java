@@ -39,6 +39,12 @@ public class RowChecker extends Checker {
 
     @Override
     protected synchronized void addViolation(Violation violation) {
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            System.out.println("Interrupt exception catched");
+        }
         rowViolations.add(violation);
+        notify();
     }
 }
