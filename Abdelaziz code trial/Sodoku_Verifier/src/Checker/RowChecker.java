@@ -13,6 +13,14 @@ public class RowChecker extends Checker {
         findViolations(values);
     }
 
+    public static int[] collectInts(int[][] board, int rowIndex) {
+        int[] row = new int[9];
+        for (int j = 0; j < 9; j++) {
+            row[j] = board[rowIndex][j];
+        }
+        return row;
+    }
+
     @Override
     protected void findViolations(int[] numbers) {
         for (int j = 1; j <= 9; j++) {

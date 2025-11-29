@@ -8,9 +8,9 @@ public abstract class Checker implements Runnable {
     protected int[] values;
     protected int num; // the value of row/column/box (1 to 9)
     // lists of all violations
-    protected List<Violation> rowViolations = new ArrayList<>();
-    protected List<Violation> colViolations = new ArrayList<>();
-    protected List<Violation> boxViolations = new ArrayList<>();
+    protected static List<Violation> rowViolations = new ArrayList<>();
+    protected static List<Violation> colViolations = new ArrayList<>();
+    protected static List<Violation> boxViolations = new ArrayList<>();
 
     protected Checker(int[] values, int num) {
         if(values == null || values.length != 9) {
@@ -26,7 +26,7 @@ public abstract class Checker implements Runnable {
 
     protected abstract void findViolations(int[] numbers);
     
-    public Result getResult() {
+    public static Result getResult() {
         return new Result(rowViolations, colViolations, boxViolations);
     }
 }
