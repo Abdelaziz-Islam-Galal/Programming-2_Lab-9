@@ -7,6 +7,10 @@ public class RowChecker extends Checker {
     public RowChecker(int[] values, int num) {
         super(values, num);
     }
+    
+    public RowChecker(int[] values, int num, boolean isSync) {
+        super(values, num, isSync);
+    }
 
     @Override
     public void run() {
@@ -32,7 +36,11 @@ public class RowChecker extends Checker {
             }
             if (positions.size() > 1) {
                 Violation violation = new Violation('r', num, j, positions);
-                addViolation(violation);
+                if (isSync) {
+                    addViolation(violation);
+                } else {
+                    rowViolations.add(violation);
+                }
             }
         }
     }

@@ -8,6 +8,10 @@ public class BoxChecker extends Checker {
         super(values, num);
     }
 
+    public BoxChecker(int[] values, int num, boolean isSync) {
+        super(values, num, isSync);
+    }
+
     @Override
     public void run() {
         findViolations(values);
@@ -38,7 +42,11 @@ public class BoxChecker extends Checker {
             }
             if (positions.size() > 1) {
                 Violation violation = new Violation('b', num, j, positions);
-                addViolation(violation);
+                if (isSync) {
+                    addViolation(violation);
+                } else {
+                    boxViolations.add(violation);
+                }
             }
         }
     }

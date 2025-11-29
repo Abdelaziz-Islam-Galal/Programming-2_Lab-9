@@ -7,6 +7,10 @@ public class ColumnChecker extends Checker {
         super(values, num);
     }
 
+    public ColumnChecker(int[] values, int num, boolean isSync) {
+        super(values, num, isSync);
+    }
+
     @Override
     public void run() {
         
@@ -32,7 +36,11 @@ public class ColumnChecker extends Checker {
             }
             if(positions.size() > 1) {
                 Violation violation = new Violation('c', num, j, positions);
-                addViolation(violation);
+                if (isSync) {
+                    addViolation(violation);
+                } else {
+                    colViolations.add(violation);
+                }
             }
         }
     }

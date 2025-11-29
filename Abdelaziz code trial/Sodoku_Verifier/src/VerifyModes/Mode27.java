@@ -18,19 +18,19 @@ public class Mode27 extends Verifier {
     public Result verify() {
         for(int i = 0; i < 9; i++) {
             int[] row = RowChecker.collectInts(board, i);
-            RowChecker rowChecker = new RowChecker(row, i + 1);
+            RowChecker rowChecker = new RowChecker(row, i + 1, true);
             Thread rowThread = new Thread(rowChecker);
             rowThread.start();
         }
         for(int i = 0; i < 9; i++) {
             int[] column = ColumnChecker.collectInts(board, i);
-            ColumnChecker columnChecker = new ColumnChecker(column, i + 1);
+            ColumnChecker columnChecker = new ColumnChecker(column, i + 1, true);
             Thread columnThread = new Thread(columnChecker);
             columnThread.start();
         }
         for(int i = 0; i < 9; i++) {
             int[] box = BoxChecker.collectsInts(board, i);
-            BoxChecker boxChecker = new BoxChecker(box, i + 1);
+            BoxChecker boxChecker = new BoxChecker(box, i + 1, true);
             Thread boxThread = new Thread(boxChecker);
             boxThread.start();
         }
