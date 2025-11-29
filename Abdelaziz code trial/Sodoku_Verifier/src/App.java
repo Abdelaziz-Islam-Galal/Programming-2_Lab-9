@@ -15,7 +15,7 @@ create manifest with main class for the .jar
 'Main-Class: App' | Out-File -Encoding ASCII MANIFEST.MF
 
 creating the .jar:
-& "C:\Program Files\Java\jdk-25\bin\jar.exe" cfm SudokuVerifier.jar MANIFEST.MF -C out .
+& "C:\Program Files\Java\jdk-25\bin\jar.exe" cfm app.jar MANIFEST.MF -C out .
 
 -> I used the whole paths because my device did not read them easily on their own
 */

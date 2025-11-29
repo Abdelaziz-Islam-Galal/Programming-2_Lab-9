@@ -12,8 +12,6 @@ public abstract class Checker implements Runnable {
     protected static List<Violation> colViolations = new ArrayList<>();
     protected static List<Violation> boxViolations = new ArrayList<>();
 
-    protected boolean isSync = false; // true for mode27
-
     protected Checker(int[] values, int num) {
         if (values == null || values.length != 9) {
             throw new IllegalArgumentException("Values must be an array of length 9.");
@@ -24,11 +22,6 @@ public abstract class Checker implements Runnable {
 
         this.values = values;
         this.num = num;
-    }
-
-    protected Checker(int[] values, int num, boolean isSync) {
-        this(values, num);
-        this.isSync = isSync;
     }
 
     protected abstract void findViolations(int[] numbers);

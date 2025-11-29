@@ -8,10 +8,6 @@ public class BoxChecker extends Checker {
         super(values, num);
     }
 
-    public BoxChecker(int[] values, int num, boolean isSync) {
-        super(values, num, isSync);
-    }
-
     @Override
     public void run() {
         findViolations(values);
@@ -42,23 +38,13 @@ public class BoxChecker extends Checker {
             }
             if (positions.size() > 1) {
                 Violation violation = new Violation('b', num, j, positions);
-                if (isSync) {
-                    addViolation(violation);
-                } else {
-                    boxViolations.add(violation);
-                }
+                addViolation(violation);
             }
         }
     }
 
     @Override
     protected synchronized void addViolation(Violation violation) {
-        try {
-            this.wait();
-        } catch (InterruptedException e) {
-            System.out.println("Interrupt exception catched");
-        }
         boxViolations.add(violation);
-        notify();
     }
 }

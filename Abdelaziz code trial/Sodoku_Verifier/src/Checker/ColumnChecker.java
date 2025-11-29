@@ -7,10 +7,6 @@ public class ColumnChecker extends Checker {
         super(values, num);
     }
 
-    public ColumnChecker(int[] values, int num, boolean isSync) {
-        super(values, num, isSync);
-    }
-
     @Override
     public void run() {
         
@@ -36,23 +32,13 @@ public class ColumnChecker extends Checker {
             }
             if(positions.size() > 1) {
                 Violation violation = new Violation('c', num, j, positions);
-                if (isSync) {
-                    addViolation(violation);
-                } else {
-                    colViolations.add(violation);
-                }
+                addViolation(violation);
             }
         }
     }
 
     @Override
     protected synchronized void addViolation(Violation violation) {
-        try {
-            this.wait();
-        } catch (InterruptedException e) {
-            System.out.println("Interrupt exception catched");
-        }
         colViolations.add(violation);
-        notify();
     }
 }
