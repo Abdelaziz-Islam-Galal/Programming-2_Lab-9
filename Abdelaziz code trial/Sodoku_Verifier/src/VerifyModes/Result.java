@@ -31,6 +31,14 @@ public class Result {
             for(Violation r: rowViolations){
                 s.append("Row " + r.getIndex() + ", #" + r.getNumber() + ", [" + r.getPositionsString() + "]\n");
             }
+            s.append("----------------------------------------------\n");
+            for(Violation c: colViolations){
+                s.append("Column " + c.getIndex() + ", #" + c.getNumber() + ", [" + c.getPositionsString() + "]\n");
+            }
+            s.append("----------------------------------------------\n");
+            for(Violation b: boxViolations){
+                s.append("Box " + b.getIndex() + ", #" + b.getNumber() + ", [" + b.getPositionsString() + "]\n");
+            }
         }
         return s.toString();
     }
