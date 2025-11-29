@@ -4,18 +4,8 @@ import java.util.*;
 
 public class RowChecker extends Checker {
 
-    private RowChecker(int[][] board, int num) {
-        super(board);
-        this.num = num;
-    }
-
-    @Override
-    public Checker getInstance(int[][] board, int num) {
-        if (instance == null) {
-            instance = new RowChecker(board, num);
-        }
-
-        return instance;
+    public RowChecker(int[][] board, int num) {
+        super(board, num);
     }
 
     @Override

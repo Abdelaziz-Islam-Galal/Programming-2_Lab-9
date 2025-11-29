@@ -1,4 +1,7 @@
 package VerifyModes;
+
+import Checker.*;
+
 public class Mode0 extends Verifier {
     public Mode0(int[][] board) {
         super(board);
@@ -6,8 +9,8 @@ public class Mode0 extends Verifier {
 
     @Override
     public Result verify() {
-        Result result = new Result();
-        // Check rows, columns, boxes sequentially
+        Checker rowChecker = RowChecker.getInstance(board, 1);
+        Checker colChecker = ColumnChecker.getInstance(board, 1);
         
         return result;
     }

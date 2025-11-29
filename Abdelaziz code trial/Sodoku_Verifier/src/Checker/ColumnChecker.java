@@ -3,18 +3,8 @@ import java.util.*;
 
 public class ColumnChecker extends Checker {
 
-    private ColumnChecker(int[][] board, int num) {
-        super(board);
-        this.num = num;
-    }
-
-    @Override
-    public Checker getInstance(int[][] board, int num) {
-        if (instance == null) {
-            instance = new ColumnChecker(board, num);
-        }
-
-        return instance;
+    public ColumnChecker(int[][] board, int num) {
+        super(board, num);
     }
 
     @Override

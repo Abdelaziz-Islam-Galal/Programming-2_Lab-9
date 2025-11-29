@@ -4,18 +4,8 @@ import java.util.*;
 
 public class BoxChecker extends Checker {
 
-    private BoxChecker(int[][] board, int num) {
-        super(board);
-        this.num = num;
-    }
-
-    @Override
-    public Checker getInstance(int[][] board, int num) {
-        if (instance == null) {
-            instance = new BoxChecker(board, num);
-        }
-
-        return instance;
+    public BoxChecker(int[][] board, int num) {
+        super(board, num);
     }
 
     @Override
