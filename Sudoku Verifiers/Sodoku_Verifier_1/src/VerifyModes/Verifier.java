@@ -1,4 +1,4 @@
-package Verifier1.VerifyModes;
+package VerifyModes;
 public abstract class Verifier {
     protected static Verifier instance; // singelton applied to all modes
     protected int[][] board;

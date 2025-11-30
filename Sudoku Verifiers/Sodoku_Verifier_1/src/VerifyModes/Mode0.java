@@ -1,6 +1,6 @@
-package Verifier1.VerifyModes;
+package VerifyModes;
 
-import Verifier1.Checker.*;
+import Checker.*;
 
 public class Mode0 extends Verifier {
     private Mode0(int[][] board) {

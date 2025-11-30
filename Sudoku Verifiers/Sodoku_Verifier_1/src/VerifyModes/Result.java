@@ -1,8 +1,9 @@
-package Verifier1.VerifyModes;
+package VerifyModes;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import Verifier1.Checker.Violation;
+import Checker.Violation;
 
 public class Result {
     private boolean isValid;

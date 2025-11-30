@@ -1,4 +1,4 @@
-package Verifier1.VerifyModes;
+package VerifyModes;
 public class VerifyFactory {
     public static Verifier createVerifier(int mode, int[][] board) {
         switch (mode) {

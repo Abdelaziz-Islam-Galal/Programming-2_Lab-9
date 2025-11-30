@@ -1,6 +1,6 @@
-package Verifier1.VerifyModes;
+package VerifyModes;
 
-import Verifier1.Checker.*;
+import Checker.*;
 import java.lang.Thread;
 
 public class Mode3 extends Verifier {
@@ -58,7 +58,7 @@ public class Mode3 extends Verifier {
         }
 
         // no race conditions because each thread will effect a separate list in the
-        // Verifier1.Checker.Checker class
+        // Checker.Checker class
 
         return Checker.getResult();
     }

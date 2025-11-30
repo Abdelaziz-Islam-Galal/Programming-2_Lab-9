@@ -1,4 +1,4 @@
-package Verifier1.Checker;
+package Checker;
 
 import java.util.Set;
 

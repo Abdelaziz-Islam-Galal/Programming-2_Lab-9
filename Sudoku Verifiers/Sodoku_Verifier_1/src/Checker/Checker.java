@@ -1,8 +1,8 @@
-package Verifier1.Checker;
+package Checker;
 
 import java.util.*;
 
-import Verifier1.VerifyModes.Result;
+import VerifyModes.Result;
 
 public abstract class Checker implements Runnable {
     protected int[] values;
