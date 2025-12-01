@@ -17,6 +17,8 @@ public class Mode27 extends Verifier {
 
     @Override
     public Result verify() {
+        Checker.clearViolations();
+
         List<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < 9; i++) {

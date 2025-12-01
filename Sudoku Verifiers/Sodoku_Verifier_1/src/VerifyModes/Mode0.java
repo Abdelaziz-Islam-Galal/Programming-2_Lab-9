@@ -16,6 +16,8 @@ public class Mode0 extends Verifier {
 
     @Override
     public Result verify() {
+        Checker.clearViolations();
+
         for (int i = 0; i < 9; i++) {
             int[] row = RowChecker.collectInts(board, i);
             RowChecker rowChecker = new RowChecker(row, i + 1);

@@ -26,7 +26,20 @@ public abstract class Checker implements Runnable {
 
     protected abstract void findViolations(int[] numbers);
 
-    protected abstract void addViolation(Violation violation); // will be synchronised when overriden
+    // protected abstract void addViolation(Violation violation); // will be
+    // synchronised when overriden
+    // must be static for the lock to be on any access
+    // when it was not static, lock did not work because it was lock per
+    // instance!!!!
+    // hence, I had to remove the abstract declaration to allow static declaration
+    // in each child (row, col, box)
+
+    public static void clearViolations() {
+        rowViolations.clear();
+        colViolations.clear();
+        boxViolations.clear();
+    } // they are static, so need to be cleared before each new verify
+      // due to unclearing, runs testing got worse every time :|
 
     public static Result getResult() {
         return new Result(rowViolations, colViolations, boxViolations);

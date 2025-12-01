@@ -37,8 +37,8 @@ public class RowChecker extends Checker {
         }
     }
 
-    @Override
-    protected synchronized void addViolation(Violation violation) {
+    protected static synchronized void addViolation(Violation violation) {
         rowViolations.add(violation);
-    }
+    } // must be static for the lock to be on any access
+    // when it was not static, lock did not work because it was lock per instance!!!!
 }

@@ -43,8 +43,7 @@ public class BoxChecker extends Checker {
         }
     }
 
-    @Override
-    protected synchronized void addViolation(Violation violation) {
+    protected static synchronized void addViolation(Violation violation) {
         boxViolations.add(violation);
     }
 }
