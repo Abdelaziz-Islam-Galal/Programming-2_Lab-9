@@ -29,8 +29,6 @@ public class BoxChecker extends Checker {
 
     @Override
     protected void findViolations(int[] numbers) {
-        System.out.println("BoxChecker checking box " + num);
-
         for (int j = 1; j <= 9; j++) {
             Set<Integer> positions = new HashSet<>();
             for (int k = 0; k < numbers.length; k++) {
