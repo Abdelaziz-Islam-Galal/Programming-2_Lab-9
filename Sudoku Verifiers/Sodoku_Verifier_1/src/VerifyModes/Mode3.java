@@ -17,6 +17,7 @@ public class Mode3 extends Verifier {
 
     @Override
     public Result verify() {
+        Checker.clearViolations();
         Thread rows = new Thread() {
             public void run() {
                 for (int i = 0; i < 9; i++) {

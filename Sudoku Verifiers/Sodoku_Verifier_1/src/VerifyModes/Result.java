@@ -2,6 +2,7 @@ package VerifyModes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import Checker.Violation;
 
@@ -10,7 +11,7 @@ public class Result {
     private List<Violation> rowViolations = new ArrayList<>();
     private List<Violation> colViolations = new ArrayList<>();
     private List<Violation> boxViolations = new ArrayList<>();
-    
+
     public Result(List<Violation> rowViolations, List<Violation> colViolations, List<Violation> boxViolations) {
         this.rowViolations = rowViolations;
         this.colViolations = colViolations;
@@ -23,21 +24,25 @@ public class Result {
     }
 
     @Override
-    public String toString(){ // so I can use it in sout directly :]
+    public String toString() { // so I can use it in sout directly :]
         StringBuilder s = new StringBuilder();
-        if(isValid) {
+        if (isValid) {
             s.append("VALID.\n");
         } else {
+            Collections.sort(rowViolations);
+            Collections.sort(colViolations);
+            Collections.sort(boxViolations);
+
             s.append("INVALID.\n\n");
-            for(Violation r: rowViolations){
+            for (Violation r : rowViolations) {
                 s.append("Row " + r.getIndex() + ", #" + r.getNumber() + ", [" + r.getPositionsString() + "]\n");
             }
             s.append("----------------------------------------------\n");
-            for(Violation c: colViolations){
+            for (Violation c : colViolations) {
                 s.append("Col " + c.getIndex() + ", #" + c.getNumber() + ", [" + c.getPositionsString() + "]\n");
             }
             s.append("----------------------------------------------\n");
-            for(Violation b: boxViolations){
+            for (Violation b : boxViolations) {
                 s.append("Box " + b.getIndex() + ", #" + b.getNumber() + ", [" + b.getPositionsString() + "]\n");
             }
         }

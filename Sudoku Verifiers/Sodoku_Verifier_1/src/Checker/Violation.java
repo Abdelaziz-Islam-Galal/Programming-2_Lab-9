@@ -2,7 +2,7 @@ package Checker;
 
 import java.util.Set;
 
-public class Violation {
+public class Violation implements Comparable<Violation> {
     private int index; // 1 to 9; we have 9 of each
     private int number; // number in violation
     private Set<Integer> positions; // set to have them arranged for easiness
@@ -60,5 +60,10 @@ public class Violation {
             }
         }
         return s.toString();
+    }
+
+    @Override
+    public int compareTo(Violation other) { // so I can use the built in Collections.sort()
+        return Integer.compare(this.index, other.index);
     }
 }
